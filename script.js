@@ -24,20 +24,19 @@ navLinks.forEach((link) => {
   });
 });
 
-/*swiper popular*/
+/* Swiper Popular */
 let swiperPopular = new Swiper(".popular__container", {
   loop: true,
   spaceBetween: 24,
-  slidesPerview: "auto",
+  slidesPerView: "auto", // Corrected slidesPerView typo
   grabCursor: true,
-
   pagination: {
     el: ".swiper-pagination",
     dynamicBullets: true,
   },
   breakpoints: {
     768: {
-      slidesPerview: 3,
+      slidesPerView: 3,
     },
     1024: {
       spaceBetween: 48,
@@ -45,22 +44,31 @@ let swiperPopular = new Swiper(".popular__container", {
   },
 });
 
-/*scrollup*/
-function scrollUp() {
+/* Scroll Up and Scroll Button */
+function scrollFunction() {
   const scrollUp = document.getElementById("scroll-up");
-  if (this.scrollUp >= 350) scrollUp.classList.add("show-scroll");
-  else scrollUp.classList.remove("show-scroll");
-}
-window.addEventListener("scroll", scrollUp);
+  const myButton = document.getElementById("myBtn");
 
-/*scrollReveal*/
-// Initialize ScrollReveal
+  if (window.scrollY >= 350) {
+    scrollUp.classList.add("show-scroll");
+    myButton.style.display = "block";
+  } else {
+    scrollUp.classList.remove("show-scroll");
+    myButton.style.display = "none";
+  }
+}
+window.addEventListener("scroll", scrollFunction);
+
+document.getElementById("myBtn").addEventListener("click", () => {
+  window.scrollTo({ top: 0, behavior: "smooth" });
+});
+
+/* ScrollReveal */
 const sr = ScrollReveal({
   origin: "top",
   distance: "80px",
   duration: 2500,
   delay: 400,
-  //reset: true,
 });
 sr.reveal(".home__title, .popular__container");
 sr.reveal(".home__subtitle", { delay: 500 });
@@ -72,6 +80,7 @@ sr.reveal(".about__group, .offer__data", { origin: "left" });
 sr.reveal(".about__data, .offer__img", { origin: "right" });
 sr.reveal(".logos__content, .footer__content", { interval: 100 });
 
+/* Reveal Services on Scroll */
 document.addEventListener("DOMContentLoaded", () => {
   const services = document.querySelectorAll(".service");
 
@@ -86,27 +95,5 @@ document.addEventListener("DOMContentLoaded", () => {
   };
 
   window.addEventListener("scroll", revealOnScroll);
-  revealOnScroll(); // Initial check in case some elements are in view at the start
+  revealOnScroll();
 });
-
-// Get the button
-let mybutton = document.getElementById("myBtn");
-
-// When the user scrolls down 20px from the top of the document, show the button
-window.onscroll = function () {
-  scrollFunction();
-};
-
-function scrollFunction() {
-  if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
-    mybutton.style.display = "block";
-  } else {
-    mybutton.style.display = "none";
-  }
-}
-
-// When the user clicks on the button, scroll to the top of the document
-function topFunction() {
-  document.body.scrollTop = 0;
-  document.documentElement.scrollTop = 0;
-}
