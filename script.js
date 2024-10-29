@@ -24,19 +24,20 @@ navLinks.forEach((link) => {
   });
 });
 
-/* Swiper Popular */
+/*swiper popular*/
 let swiperPopular = new Swiper(".popular__container", {
   loop: true,
   spaceBetween: 24,
-  slidesPerView: "auto", // Corrected slidesPerView typo
+  slidesPerview: "auto",
   grabCursor: true,
+
   pagination: {
     el: ".swiper-pagination",
     dynamicBullets: true,
   },
   breakpoints: {
     768: {
-      slidesPerView: 3,
+      slidesPerview: 3,
     },
     1024: {
       spaceBetween: 48,
@@ -44,31 +45,22 @@ let swiperPopular = new Swiper(".popular__container", {
   },
 });
 
-/* Scroll Up and Scroll Button */
-function scrollFunction() {
+/*scrollup*/
+function scrollUp() {
   const scrollUp = document.getElementById("scroll-up");
-  const myButton = document.getElementById("myBtn");
-
-  if (window.scrollY >= 350) {
-    scrollUp.classList.add("show-scroll");
-    myButton.style.display = "block";
-  } else {
-    scrollUp.classList.remove("show-scroll");
-    myButton.style.display = "none";
-  }
+  if (this.scrollUp >= 350) scrollUp.classList.add("show-scroll");
+  else scrollUp.classList.remove("show-scroll");
 }
-window.addEventListener("scroll", scrollFunction);
+window.addEventListener("scroll", scrollUp);
 
-document.getElementById("myBtn").addEventListener("click", () => {
-  window.scrollTo({ top: 0, behavior: "smooth" });
-});
-
-/* ScrollReveal */
+/*scrollReveal*/
+// Initialize ScrollReveal
 const sr = ScrollReveal({
   origin: "top",
   distance: "80px",
   duration: 2500,
   delay: 400,
+  //reset: true,
 });
 sr.reveal(".home__title, .popular__container");
 sr.reveal(".home__subtitle", { delay: 500 });
@@ -80,7 +72,6 @@ sr.reveal(".about__group, .offer__data", { origin: "left" });
 sr.reveal(".about__data, .offer__img", { origin: "right" });
 sr.reveal(".logos__content, .footer__content", { interval: 100 });
 
-/* Reveal Services on Scroll */
 document.addEventListener("DOMContentLoaded", () => {
   const services = document.querySelectorAll(".service");
 
@@ -95,5 +86,5 @@ document.addEventListener("DOMContentLoaded", () => {
   };
 
   window.addEventListener("scroll", revealOnScroll);
-  revealOnScroll();
+  revealOnScroll(); // Initial check in case some elements are in view at the start
 });
