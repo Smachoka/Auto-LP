@@ -146,7 +146,7 @@ img {
 }
 
 .nav__logo img {
-  width: 100px;
+  width: 150px;
   margin-top: 20px;
 }
 
@@ -182,7 +182,7 @@ img {
   font-size: var(--h2-font-size);
   font-weight: var(--font-medium);
   transition: 0.3s;
-  color: var(--body-color);
+  color: red;
 }
 
 .nav__link:hover {
@@ -212,14 +212,14 @@ img {
   position: relative;
   overflow: hidden;
   background-image: linear-gradient(
-      to bottom,
-      rgba(0, 0, 0, 0.7),
-      rgba(0, 0, 0, 0)
-    ),
-    url("images/slide1.jpg");
+    to bottom,
+    rgba(0, 0, 0, 0.7),
+    rgba(0, 0, 0, 0)
+  );
   background-position: center;
   background-size: cover;
   height: 100vh;
+  animation: slideBackground 15s infinite;
 }
 .home__container {
   position: relative;
@@ -303,6 +303,11 @@ img {
   animation: button 3s infinite;
   border: 0 0 12px hsl(0, 100%, 57%);
 }
+.static-image {
+  display: none; /* Hide the static image by default */
+  width: 100%; /* Ensure the static image is responsive */
+  height: auto;
+}
 /* Button animate */
 @keyframes button {
   0% {
@@ -312,12 +317,30 @@ img {
     box-shadow: 0 0 24px hsl(0, 90%, 55%);
   }
 }
+/* Slideshow container styling */
+.slideshow {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 300%; /* 3 images side by side */
+  height: 100%;
+  display: flex;
+  animation: slideLeft 15s infinite;
+}
+
+.slide {
+  width: 100vw; /* Each slide takes the full viewport width */
+  height: 100%;
+  background-size: cover;
+  background-position: center;
+}
+
 @media screen and (max-width: 767px) {
   .home {
     background-image: linear-gradient(
       to bottom,
-      rgba(0, 0, 0, 1),
-      rgba(0, 0, 0, 1)
+      rgba(0, 0, 0, 2),
+      rgba(0, 0, 0, 2)
     );
     background-size: cover;
     height: 600px;
@@ -326,6 +349,17 @@ img {
   }
   .home__car-number {
     margin-bottom: 9rem;
+  }
+  .home {
+    height: auto; /* Adjust height for smaller screens */
+  }
+
+  .slideshow {
+    display: none; /* Hide the slideshow on small screens */
+  }
+
+  .static-image {
+    display: block; /* Show the static image on small screens */
   }
 }
 /*=============== BUTTON ===============*/

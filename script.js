@@ -88,3 +88,14 @@ document.addEventListener("DOMContentLoaded", () => {
   window.addEventListener("scroll", revealOnScroll);
   revealOnScroll(); // Initial check in case some elements are in view at the start
 });
+
+const slideshow = document.querySelector(".slideshow");
+const slides = document.querySelectorAll(".slide");
+let currentIndex = 0;
+
+function slideImages() {
+  currentIndex = (currentIndex + 1) % slides.length; // Loop back to first slide
+  slideshow.style.transform = `translateX(-${currentIndex * 100}vw)`;
+}
+
+setInterval(slideImages, 5000); // Change slide every 5 seconds
