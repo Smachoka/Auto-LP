@@ -717,7 +717,7 @@ img {
     width: 60px;
   }
   .footer__container {
-    grid-template-columns: repeat(4, max-content);
+    grid-template-columns: repeat(2, max-content);
     justify-content: space-between;
   }
   .footer__logo {
